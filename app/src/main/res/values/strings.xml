@@ -1,0 +1,7 @@
+<resources>
+  <string name="app_name">PicMe Gallery</string>
+  <string name="title_home">Home</string>
+  <string name="title_dashboard">Dashboard</string>
+  <string name="title_notifications">Notifications</string>
+  <string name="login_failure_message">Unable to sign in with provided credentials</string>
+</resources>
