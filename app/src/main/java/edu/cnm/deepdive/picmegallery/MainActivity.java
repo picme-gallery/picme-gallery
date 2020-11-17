@@ -1,14 +1,19 @@
 package edu.cnm.deepdive.picmegallery;
 
 import android.os.Bundle;
+import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import edu.cnm.deepdive.picmegallery.service.UserRepository;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 public class MainActivity extends AppCompatActivity {
+
+  private UserRepository userRepository; //FIXME
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +28,14 @@ public class MainActivity extends AppCompatActivity {
     NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
     NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
     NavigationUI.setupWithNavController(navView, navController);
+    //FIX ME This is just temporary to verify round trip.
+    userRepository = new UserRepository(this);
+    userRepository.getProfileFromServer()
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(
+            (user) -> Toast.makeText(this, user.getDisplayName(), Toast.LENGTH_LONG).show(),
+            (throwable) -> Toast.makeText(this, throwable.getMessage(), Toast.LENGTH_LONG ).show()
+        );
   }
 
 }
