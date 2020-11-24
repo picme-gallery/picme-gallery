@@ -22,4 +22,11 @@
     android:label="@string/title_notifications"
     android:name="edu.cnm.deepdive.picmegallery.ui.notifications.NotificationsFragment"
     tools:layout="@layout/fragment_notifications"/>
+
+  <fragment
+    android:id="@+id/photos_collection"
+    android:label="@string/event_photos"
+    android:name="edu.cnm.deepdive.picmegallery.controller.EventFragment"
+    tools:layout="@layout/fragment_event"/>
+
 </navigation>

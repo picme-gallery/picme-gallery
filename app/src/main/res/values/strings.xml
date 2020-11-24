@@ -4,4 +4,5 @@
   <string name="title_dashboard">Dashboard</string>
   <string name="title_notifications">Notifications</string>
   <string name="login_failure_message">Unable to sign in with provided credentials</string>
+  <string name="event_photos">Event Photos</string>
 </resources>
