@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.picmegallery.ui.dashboard;
+package edu.cnm.deepdive.picmegallery.ui.events;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,17 +13,17 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import edu.cnm.deepdive.picmegallery.R;
 
-public class DashboardFragment extends Fragment {
+public class EventsFragment extends Fragment {
 
-  private DashboardViewModel dashboardViewModel;
+  private EventViewModel eventViewModel;
 
   public View onCreateView(@NonNull LayoutInflater inflater,
       ViewGroup container, Bundle savedInstanceState) {
-    dashboardViewModel =
-        new ViewModelProvider(this).get(DashboardViewModel.class);
-    View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
-    final TextView textView = root.findViewById(R.id.text_dashboard);
-    dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+    eventViewModel =
+       new ViewModelProvider(this).get(EventViewModel.class);
+    View root = inflater.inflate(R.layout.fragment_events, container, false);
+    final TextView textView = root.findViewById(R.id.nav_events);
+    eventViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
       @Override
       public void onChanged(@Nullable String s) {
         textView.setText(s);

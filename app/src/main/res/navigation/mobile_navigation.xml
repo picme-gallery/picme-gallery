@@ -8,25 +8,25 @@
   <fragment
     android:id="@+id/navigation_events"
     android:label="@string/title_events"
-    android:name="edu.cnm.deepdive.picmegallery.ui.home.HomeFragment"
-    tools:layout="@layout/fragment_home"/>
+    android:name="edu.cnm.deepdive.picmegallery.ui.events.EventsFragment"
+    tools:layout="@layout/fragment_events"/>
 
   <fragment
     android:id="@+id/navigation_gallery"
     android:label="@string/title_gallery"
-    android:name="edu.cnm.deepdive.picmegallery.ui.dashboard.DashboardFragment"
-    tools:layout="@layout/fragment_dashboard"/>
+    android:name="edu.cnm.deepdive.picmegallery.ui.gallery.GalleryFragment"
+    tools:layout="@layout/fragment_gallery"/>
 
   <fragment
     android:id="@+id/navigation_camera"
     android:label="@string/title_camera"
-    android:name="edu.cnm.deepdive.picmegallery.ui.notifications.NotificationsFragment"
-    tools:layout="@layout/fragment_notifications"/>
+    android:name="edu.cnm.deepdive.picmegallery.ui.camera.CameraFragment"
+    tools:layout="@layout/fragment_camera"/>
 
   <fragment
-    android:id="@+id/photos_collection"
+    android:id="@+id/nav_event_photos"
     android:label="@string/event_photos"
     android:name="edu.cnm.deepdive.picmegallery.controller.EventFragment"
-    tools:layout="@layout/fragment_event"/>
+    tools:layout="@layout/fragment_event_photos"/>
 
 </navigation>
