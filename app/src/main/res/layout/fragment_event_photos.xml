@@ -8,7 +8,7 @@
   tools:context=".controller.EventFragment">
 
   <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/nav_event_photos"
+    android:id="@+id/event_photos"
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:orientation="vertical"

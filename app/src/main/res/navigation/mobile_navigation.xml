@@ -24,7 +24,7 @@
     tools:layout="@layout/fragment_camera"/>
 
   <fragment
-    android:id="@+id/nav_event_photos"
+    android:id="@+id/event_photos"
     android:label="@string/event_photos"
     android:name="edu.cnm.deepdive.picmegallery.controller.EventFragment"
     tools:layout="@layout/fragment_event_photos"/>
