@@ -7,11 +7,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import edu.cnm.deepdive.picmegallery.databinding.FragmentEventBinding;
+import edu.cnm.deepdive.picmegallery.databinding.FragmentEventPhotosBinding;
 
 public class EventFragment extends Fragment {
 
-  private FragmentEventBinding binding;
+  private FragmentEventPhotosBinding binding;
 
 
   public static EventFragment createInstance(/* parameters to pass to fragment*/) {
@@ -33,7 +33,8 @@ public class EventFragment extends Fragment {
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-    binding = FragmentEventBinding.inflate(inflater);
+    binding = FragmentEventPhotosBinding.inflate(inflater);
+
     //Access references in binding to set contents of view objects, as appropriate
 
     //The stuff down below allows us to display multiple variations of a fragment, without having to
