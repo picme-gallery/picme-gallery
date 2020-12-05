@@ -21,6 +21,9 @@ public interface WebService {
   @GET("users/me")
   Single<User> getProfile(@Header("Authorization") String bearerToken);
 
+  @GET("events/{id}")
+  Single<Event> getEvent(@Header("Authorization") long id, String passkey);
+
 
 
 
