@@ -8,4 +8,6 @@
   <string name="create_event_button_text">Create Event</string>
   <string name="join_event_button_text">Join Event</string>
   <string name="add_event_button_text">Add Event</string>
+  <string name="event_key_hint">Event Key</string>
+  <string name="event_passkey_hint">Event Passkey</string>
 </resources>
