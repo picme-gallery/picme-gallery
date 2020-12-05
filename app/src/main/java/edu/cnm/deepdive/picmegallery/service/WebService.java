@@ -3,6 +3,7 @@ package edu.cnm.deepdive.picmegallery.service;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import edu.cnm.deepdive.picmegallery.BuildConfig;
+import edu.cnm.deepdive.picmegallery.model.Event;
 import edu.cnm.deepdive.picmegallery.model.User;
 import io.reactivex.Single;
 import okhttp3.OkHttpClient;
@@ -13,11 +14,13 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Path;
 
 public interface WebService {
 
   @GET("users/me")
   Single<User> getProfile(@Header("Authorization") String bearerToken);
+
 
 
 

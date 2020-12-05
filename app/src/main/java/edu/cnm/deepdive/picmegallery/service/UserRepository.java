@@ -3,7 +3,6 @@ package edu.cnm.deepdive.picmegallery.service;
 import android.content.Context;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import edu.cnm.deepdive.picmegallery.model.User;
-import io.reactivex.Scheduler;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 
