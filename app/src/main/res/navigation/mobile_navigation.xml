@@ -26,7 +26,7 @@
   <fragment
     android:id="@+id/event_photos"
     android:label="@string/event_photos"
-    android:name="edu.cnm.deepdive.picmegallery.controller.EventFragment"
+    android:name="edu.cnm.deepdive.picmegallery.controller.EventPhotoFragment"
     tools:layout="@layout/fragment_event_photos"/>
 
 </navigation>
