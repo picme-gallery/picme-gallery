@@ -19,6 +19,9 @@ public interface WebService {
   @GET("users/me")
   Single<User> getProfile(@Header("Authorization") String bearerToken);
 
+
+
+
   static WebService getInstance() {
     return InstanceHolder.INSTANCE;
   }
