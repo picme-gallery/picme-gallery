@@ -110,7 +110,7 @@
     android:layout_width="125dp"
     android:layout_height="50dp"
     android:text="@string/create_event_button_text"
-    android:textColor="@color/orange"
+    android:textColor="@color/yellow"
     android:background="@drawable/rounded_buttons"
     app:layout_constraintTop_toBottomOf="@id/horizontal_guideline"
     app:layout_constraintStart_toEndOf="@id/vertical_guideline"

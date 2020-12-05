@@ -6,4 +6,6 @@
   <string name="login_failure_message">Unable to sign in with provided credentials</string>
   <string name="event_photos">Event Photos</string>
   <string name="create_event_button_text">Create Event</string>
+  <string name="join_event_button_text">Join Event</string>
+  <string name="add_event_button_text">Add Event</string>
 </resources>

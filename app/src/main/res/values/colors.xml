@@ -8,5 +8,7 @@
   <color name="magenta">#FF07FB</color>
   <color name="purple">#3700B3</color>
   <color name="orange">#F65D15</color>
+  <color name="yellow">#FFC107</color>
+
 
 </resources>
