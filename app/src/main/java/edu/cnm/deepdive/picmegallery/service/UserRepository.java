@@ -9,13 +9,13 @@ import io.reactivex.schedulers.Schedulers;
 public class UserRepository {
 
   private final Context context;
-  private final WebService webService;
+  private final WebServiceProxy webService;
   private final GoogleSignInService signInService;
   //TODO Add fields as appropriate for access to DAOs etc.
 
   public UserRepository(Context context) {
     this.context = context;
-    webService = WebService.getInstance();
+    webService = WebServiceProxy.getInstance();
     signInService = GoogleSignInService.getInstance();
   }
 

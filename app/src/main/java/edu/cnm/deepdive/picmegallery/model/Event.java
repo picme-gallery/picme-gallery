@@ -11,7 +11,7 @@ public class Event {
   private long externalId;
 
   @Expose
-  private String user;
+  private User user;
 
   @Expose
   private String name;
@@ -20,7 +20,7 @@ public class Event {
   private Date time;
 
   @Expose
-  private Date update;
+  private Date updated;
 
   @Expose
   private String description;
@@ -35,7 +35,7 @@ public class Event {
   private Double latitude;
 
   @Expose
-  private List<edu.cnm.deepdive.picmegallery.model.User> users;
+  private List<User> users;
 
   @Expose
   private List<Photo> photos;
@@ -48,11 +48,11 @@ public class Event {
     this.externalId = externalId;
   }
 
-  public String getUser() {
+  public User getUser() {
     return user;
   }
 
-  public void setUser(String user) {
+  public void setUser(User user) {
     this.user = user;
   }
 
@@ -72,12 +72,12 @@ public class Event {
     this.time = time;
   }
 
-  public Date getUpdate() {
-    return update;
+  public Date getUpdated() {
+    return updated;
   }
 
-  public void setUpdate(Date update) {
-    this.update = update;
+  public void setUpdated(Date updated) {
+    this.updated = updated;
   }
 
   public String getDescription() {

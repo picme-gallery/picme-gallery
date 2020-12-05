@@ -16,24 +16,28 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Path;
 
-public interface WebService {
+public interface WebServiceProxy {
 
   @GET("users/me")
   Single<User> getProfile(@Header("Authorization") String bearerToken);
 
   @GET("events/{id}")
-  Single<Event> getEvent(@Header("Authorization") long id, String passkey);
+  Single<Event> getEvent(@Header("Authorization") String bearerToken, @Header("Passkey") String passkey, @Path("id") long id);
+
+  @GET("events/{id}")
+  Single<Event> getOwnEvent(@Header("Authorization") String bearerToken,  @Path("id") long id);
 
 
 
 
 
-  static WebService getInstance() {
+
+  static WebServiceProxy getInstance() {
     return InstanceHolder.INSTANCE;
   }
 
   class InstanceHolder {
-    private static final WebService INSTANCE;
+    private static final WebServiceProxy INSTANCE;
 
     static {
       Gson gson = new GsonBuilder()
@@ -50,7 +54,7 @@ public interface WebService {
           .client(client)
           .baseUrl(BuildConfig.BASE_URL)
           .build();
-      INSTANCE = retrofit.create(WebService.class);
+      INSTANCE = retrofit.create(WebServiceProxy.class);
     }
   }
 
