@@ -12,7 +12,7 @@
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:orientation="vertical"
-    android:background="#FF6F41"
+    android:background="@drawable/background_fill"
     android:padding="@dimen/half_static_spacing"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     app:layout_constraintTop_toTopOf="parent"
