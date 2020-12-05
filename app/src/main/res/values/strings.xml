@@ -9,9 +9,9 @@
   <string name="join_event_button_text">Join Event</string>
   <string name="add_event_button_text">Add Event</string>
   <string name="event_key_hint">Event Key</string>
-  <string name="event_passkey_hint">Event Passkey</string>
-  <string name="event_address_hint">Event address</string>
+  <string name="event_passkey_hint">event passkey</string>
+  <string name="event_address_hint">event address</string>
   <string name="enter_event_password">enter event password</string>
-  <string name="event_description_hint">Event Description</string>
-  <string name="event_name_hint">Event Name</string>
+  <string name="event_description_hint">event description</string>
+  <string name="event_name_hint">event name</string>
 </resources>

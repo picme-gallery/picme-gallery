@@ -49,6 +49,8 @@
       android:id="@+id/event_address"
       android:layout_width="146dp"
       android:layout_height="62dp"
+      android:gravity="center"
+      android:textAlignment="center"
       android:hint="@string/event_address_hint"
       android:inputType="textCapCharacters|textMultiLine|text"/>
 
@@ -67,8 +69,9 @@
 
     <EditText
       android:id="@+id/event_description"
-      android:layout_width="146dp"
-      android:layout_height="32dp"
+      android:layout_width="178dp"
+      android:layout_height="62dp"
+      android:gravity="center"
       android:hint="@string/event_description_hint"
       android:textAlignment="center"/>
 
@@ -80,7 +83,6 @@
     android:layout_height="wrap_content"
     app:hintAnimationEnabled="true"
     app:hintEnabled="true"
-
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/event_description_layout"/>
@@ -101,7 +103,7 @@
   <EditText
     android:id="@+id/editTextTextPassword"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="58dp"
     android:ems="10"
     android:hint="@string/enter_event_password"
     android:inputType="textPassword"
@@ -115,7 +117,7 @@
   <com.google.android.material.textfield.TextInputEditText
     android:id="@+id/event_name"
     android:layout_width="146dp"
-    android:layout_height="86dp"
+    android:layout_height="56dp"
     android:hint="@string/event_name_hint"
     android:inputType="textCapCharacters|textMultiLine|text"
     android:textAlignment="center"
