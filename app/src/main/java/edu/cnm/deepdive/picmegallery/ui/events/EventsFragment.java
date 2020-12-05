@@ -1,20 +1,17 @@
 package edu.cnm.deepdive.picmegallery.ui.events;
 
 import android.os.Bundle;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import edu.cnm.deepdive.picmegallery.R;
+import edu.cnm.deepdive.picmegallery.controller.DefineEventFragment;
 import edu.cnm.deepdive.picmegallery.databinding.FragmentEventsBinding;
-import edu.cnm.deepdive.picmegallery.ui.camera.CameraViewModel;
 import org.jetbrains.annotations.NotNull;
 
 public class EventsFragment extends Fragment {
@@ -29,10 +26,14 @@ private EventViewModel viewModel;
   public View onCreateView( LayoutInflater inflater,
       @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     binding = FragmentEventsBinding.inflate(inflater);
+    binding.addEventButton.setOnClickListener((V) ->
+        Navigation.findNavController(getView()).navigate(R.id.define_event));
     // THe stuff down bellow allows us to display multiple variations of a fragment.
 //    Variation variation = MatchFragmentArgs.fromBundle(getArguments()).getVariation();
 //    binding.placeholder.setText(variation.toString());
     // Access references in binding to set contents of view objects, as appropriate.
+
+    //EventsFragmentDirections.actionNavHomeToDefineEventFragment()
     return binding.getRoot();
   }
 
