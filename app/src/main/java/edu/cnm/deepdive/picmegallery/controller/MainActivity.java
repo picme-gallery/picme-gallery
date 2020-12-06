@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.picmegallery;
+package edu.cnm.deepdive.picmegallery.controller;
 
 import android.os.Bundle;
 import android.widget.Toast;
@@ -8,6 +8,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import edu.cnm.deepdive.picmegallery.R;
 import edu.cnm.deepdive.picmegallery.service.UserRepository;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 

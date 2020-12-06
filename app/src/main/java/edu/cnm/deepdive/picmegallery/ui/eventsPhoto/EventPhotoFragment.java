@@ -1,6 +1,5 @@
-package edu.cnm.deepdive.picmegallery.controller;
+package edu.cnm.deepdive.picmegallery.ui.eventsPhoto;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,11 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import edu.cnm.deepdive.picmegallery.MainViewModel;
 import edu.cnm.deepdive.picmegallery.databinding.FragmentEventPhotosBinding;
-import edu.cnm.deepdive.picmegallery.databinding.FragmentEventsBinding;
-import edu.cnm.deepdive.picmegallery.ui.events.EventViewModel;
 import org.jetbrains.annotations.NotNull;
 
 public class EventPhotoFragment extends Fragment {

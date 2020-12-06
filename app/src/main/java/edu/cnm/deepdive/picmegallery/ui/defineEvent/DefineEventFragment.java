@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.picmegallery.controller;
+package edu.cnm.deepdive.picmegallery.ui.defineEvent;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

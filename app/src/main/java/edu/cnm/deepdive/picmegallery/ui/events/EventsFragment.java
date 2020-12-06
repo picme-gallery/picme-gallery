@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import edu.cnm.deepdive.picmegallery.R;
-import edu.cnm.deepdive.picmegallery.controller.DefineEventFragment;
 import edu.cnm.deepdive.picmegallery.databinding.FragmentEventsBinding;
 import org.jetbrains.annotations.NotNull;
 

@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.picmegallery;
+package edu.cnm.deepdive.picmegallery.controller;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
