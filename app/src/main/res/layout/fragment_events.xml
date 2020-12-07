@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@drawable/background_fill"
+  tools:context=".ui.events.EventsFragment">
+
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/vertical_guideline"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_percent="0.5"/>
+
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/horizontal_guideline"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintGuide_percent="0.5"
+    android:orientation="horizontal"/>
+
+  <Button
+    android:id="@+id/join_event_button"
+    android:layout_width="96dp"
+    android:layout_height="75dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="21dp"
+    android:layout_marginStart="4dp"
+    android:padding="10dp"
+    android:background="@drawable/rounded_buttons"
+    android:text="@string/join_event_button_text"
+    android:textColor="@color/yellow"
+    app:layout_constraintBottom_toTopOf="@+id/event_list"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"/>
+  <Button
+    android:id="@+id/add_event_button"
+    android:layout_width="96dp"
+    android:layout_height="75dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginStart="4dp"
+    android:padding="10dp"
+    android:background="@drawable/rounded_buttons"
+    android:text="@string/add_event_button_text"
+    android:textColor="@color/yellow"
+    app:layout_constraintBottom_toTopOf="@+id/event_list"
+    app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
+    app:layout_constraintHorizontal_bias="1.0"
+    app:layout_constraintStart_toEndOf="@id/join_event_button"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.0"/>
+
+  <ListView
+    android:id="@+id/event_list"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:padding="8dp"
+    android:background="@drawable/background_fill"
+    android:divider="@color/colorPrimaryDark"
+    android:dividerHeight="1dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+
+    app:layout_constraintTop_toBottomOf="@id/event_passkey_layout"
+    app:layout_constraintVertical_bias="0.0"
+    tools:layout_editor_absoluteX="-78dp"/>
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/event_key_layout"
+    android:layout_width="150dp"
+    android:layout_height="50dp"
+    app:hintAnimationEnabled="true"
+    app:hintEnabled="true"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/event_key"
+      android:layout_width="150dp"
+      android:layout_height="50dp"
+      android:hint="@string/event_key_hint"
+      android:inputType="textCapCharacters|textMultiLine|text"
+      tools:text="Event Key"/>
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/event_passkey_layout"
+    android:layout_width="150dp"
+    android:layout_height="50dp"
+    app:hintAnimationEnabled="true"
+    app:hintEnabled="true"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/event_key_layout">
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/event_passkey"
+      android:layout_width="150dp"
+      android:layout_height="50dp"
+      android:hint="@string/event_passkey_hint"
+      android:inputType="textCapCharacters|textMultiLine|text"
+      tools:text="Event Key"/>
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

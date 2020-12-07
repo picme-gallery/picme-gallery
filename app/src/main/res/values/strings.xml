@@ -1,7 +1,17 @@
 <resources>
   <string name="app_name">PicMe Gallery</string>
-  <string name="title_home">Home</string>
-  <string name="title_dashboard">Dashboard</string>
-  <string name="title_notifications">Notifications</string>
+  <string name="title_events">Events</string>
+  <string name="title_gallery">Gallery</string>
+  <string name="title_camera">Camera</string>
   <string name="login_failure_message">Unable to sign in with provided credentials</string>
+  <string name="event_photos">Event Photos</string>
+  <string name="create_event_button_text">Create Event</string>
+  <string name="join_event_button_text">Join Event</string>
+  <string name="add_event_button_text">Add Event</string>
+  <string name="event_key_hint">Event Key</string>
+  <string name="event_passkey_hint">event passkey</string>
+  <string name="event_address_hint">event address</string>
+  <string name="enter_event_password">enter event password</string>
+  <string name="event_description_hint">event description</string>
+  <string name="event_name_hint">event name</string>
 </resources>

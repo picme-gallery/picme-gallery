@@ -3,6 +3,7 @@ package edu.cnm.deepdive.picmegallery.service;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import edu.cnm.deepdive.picmegallery.BuildConfig;
+import edu.cnm.deepdive.picmegallery.model.Event;
 import edu.cnm.deepdive.picmegallery.model.User;
 import io.reactivex.Single;
 import okhttp3.OkHttpClient;
@@ -13,18 +14,30 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Path;
 
-public interface WebService {
+public interface WebServiceProxy {
 
   @GET("users/me")
   Single<User> getProfile(@Header("Authorization") String bearerToken);
 
-  static WebService getInstance() {
+  @GET("events/{id}")
+  Single<Event> getEvent(@Header("Authorization") String bearerToken, @Header("Passkey") String passkey, @Path("id") long id);
+
+  @GET("events/{id}")
+  Single<Event> getOwnEvent(@Header("Authorization") String bearerToken,  @Path("id") long id);
+
+
+
+
+
+
+  static WebServiceProxy getInstance() {
     return InstanceHolder.INSTANCE;
   }
 
   class InstanceHolder {
-    private static final WebService INSTANCE;
+    private static final WebServiceProxy INSTANCE;
 
     static {
       Gson gson = new GsonBuilder()
@@ -41,7 +54,7 @@ public interface WebService {
           .client(client)
           .baseUrl(BuildConfig.BASE_URL)
           .build();
-      INSTANCE = retrofit.create(WebService.class);
+      INSTANCE = retrofit.create(WebServiceProxy.class);
     }
   }
 

@@ -2,13 +2,11 @@ package edu.cnm.deepdive.picmegallery.controller;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.util.Log;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import edu.cnm.deepdive.picmegallery.MainActivity;
 import edu.cnm.deepdive.picmegallery.R;
 import edu.cnm.deepdive.picmegallery.databinding.ActivityLoginBinding;
 import edu.cnm.deepdive.picmegallery.service.GoogleSignInService;

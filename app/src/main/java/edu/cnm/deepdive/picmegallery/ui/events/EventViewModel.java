@@ -1,16 +1,16 @@
-package edu.cnm.deepdive.picmegallery.ui.notifications;
+package edu.cnm.deepdive.picmegallery.ui.events;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class NotificationsViewModel extends ViewModel {
+public class EventViewModel extends ViewModel {
 
   private MutableLiveData<String> mText;
 
-  public NotificationsViewModel() {
+  public EventViewModel() {
     mText = new MutableLiveData<>();
-    mText.setValue("This is notifications fragment");
+    mText.setValue("This is the Event fragment");
   }
 
   public LiveData<String> getText() {
