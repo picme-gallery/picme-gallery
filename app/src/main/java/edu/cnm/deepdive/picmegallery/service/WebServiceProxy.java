@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import edu.cnm.deepdive.picmegallery.BuildConfig;
 import edu.cnm.deepdive.picmegallery.model.Event;
 import edu.cnm.deepdive.picmegallery.model.User;
+import io.reactivex.Completable;
 import io.reactivex.Single;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -12,8 +13,10 @@ import okhttp3.logging.HttpLoggingInterceptor.Level;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface WebServiceProxy {
@@ -27,6 +30,8 @@ public interface WebServiceProxy {
   @GET("events/{id}")
   Single<Event> getOwnEvent(@Header("Authorization") String bearerToken,  @Path("id") long id);
 
+  @POST
+  Completable createEvent(@Body Event event);
 
 
 

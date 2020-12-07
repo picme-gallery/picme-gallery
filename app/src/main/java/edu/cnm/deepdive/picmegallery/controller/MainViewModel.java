@@ -63,6 +63,16 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     );
   }
 
+  public void createEvent(Event event){
+    pending.add(
+        eventRepository.createEvent(event)
+        .subscribe(
+            () -> {},
+            throwable::postValue
+        )
+    );
+  }
+
 
   //TODO public methods that will be invoked by the controller to update the viewModel
 

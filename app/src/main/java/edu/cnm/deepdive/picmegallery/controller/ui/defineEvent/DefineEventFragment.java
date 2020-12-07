@@ -7,18 +7,29 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
+import edu.cnm.deepdive.picmegallery.controller.MainViewModel;
 import edu.cnm.deepdive.picmegallery.databinding.FragmentDefineEventBinding;
 import org.jetbrains.annotations.NotNull;
 
 public class DefineEventFragment extends Fragment {
 
   private FragmentDefineEventBinding binding;
+  private MainViewModel viewModel;
 
   @Nullable
   @Override
   public View onCreateView(LayoutInflater inflater,
       @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     binding = FragmentDefineEventBinding.inflate(inflater);
+    binding.createEventButton.setOnClickListener((v) -> {
+      String eventName = binding.eventName.getText().toString().trim();
+      String eventAddress = binding.eventAddress.getText().toString().trim();
+      String eventDescription = binding.eventDescription.getText().toString().trim();
+      String eventPassword = binding.eventPasskey.getText().toString().trim();
+
+    });
     return binding.getRoot();
   }
 
@@ -26,6 +37,7 @@ public class DefineEventFragment extends Fragment {
   public void onViewCreated(@NonNull @NotNull View view,
       @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+    viewModel = new ViewModelProvider(this).get(MainViewModel.class);
   }
 }
 

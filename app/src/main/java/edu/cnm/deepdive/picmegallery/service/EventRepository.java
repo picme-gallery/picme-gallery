@@ -2,6 +2,7 @@ package edu.cnm.deepdive.picmegallery.service;
 
 import android.content.Context;
 import edu.cnm.deepdive.picmegallery.model.Event;
+import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 
@@ -29,6 +30,10 @@ public class EventRepository {
     return signInService.refreshBearerToken()
         .observeOn(Schedulers.io())
         .flatMap((token) -> webService.getOwnEvent(token, id));
+  }
+
+  public Completable createEvent(Event event) {
+    return webService.createEvent(event);
   }
 
 }
