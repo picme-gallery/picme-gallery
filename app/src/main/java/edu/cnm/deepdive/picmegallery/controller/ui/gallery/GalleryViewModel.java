@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.picmegallery.ui.gallery;
+package edu.cnm.deepdive.picmegallery.controller.ui.gallery;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

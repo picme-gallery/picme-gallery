@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.picmegallery.ui.gallery;
+package edu.cnm.deepdive.picmegallery.controller.ui.camera;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,21 +9,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-
 import androidx.lifecycle.ViewModelProvider;
+
 import edu.cnm.deepdive.picmegallery.R;
 
-public class GalleryFragment extends Fragment {
+public class CameraFragment extends Fragment {
 
-  private GalleryViewModel galleryViewModel;
+  private CameraViewModel cameraViewModel;
 
   public View onCreateView(@NonNull LayoutInflater inflater,
       ViewGroup container, Bundle savedInstanceState) {
-    galleryViewModel =
-        new ViewModelProvider(this).get(GalleryViewModel.class);
-    View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-    final TextView textView = root.findViewById(R.id.nav_gallery);
-    galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+    cameraViewModel =
+        new ViewModelProvider(this).get(CameraViewModel.class);
+    View root = inflater.inflate(R.layout.fragment_camera, container, false);
+    final TextView textView = root.findViewById(R.id.nav_camera);
+    cameraViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
       @Override
       public void onChanged(@Nullable String s) {
         textView.setText(s);
