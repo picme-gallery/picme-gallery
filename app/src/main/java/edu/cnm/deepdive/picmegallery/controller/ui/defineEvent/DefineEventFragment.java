@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import edu.cnm.deepdive.picmegallery.R;
 import edu.cnm.deepdive.picmegallery.controller.MainViewModel;
 import edu.cnm.deepdive.picmegallery.databinding.FragmentDefineEventBinding;
 import org.jetbrains.annotations.NotNull;
@@ -24,10 +25,7 @@ public class DefineEventFragment extends Fragment {
       @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     binding = FragmentDefineEventBinding.inflate(inflater);
     binding.createEventButton.setOnClickListener((v) -> {
-      String eventName = binding.eventName.getText().toString().trim();
-      String eventAddress = binding.eventAddress.getText().toString().trim();
-      String eventDescription = binding.eventDescription.getText().toString().trim();
-      String eventPassword = binding.eventPasskey.getText().toString().trim();
+
 
     });
     return binding.getRoot();

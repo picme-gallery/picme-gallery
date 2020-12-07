@@ -37,6 +37,12 @@
     android:id="@+id/define_event"
     android:label="@string/event_photos"
     android:name="edu.cnm.deepdive.picmegallery.controller.ui.defineEvent.DefineEventFragment"
-    tools:layout="@layout/fragment_define_event"/>
+    tools:layout="@layout/fragment_define_event">
+
+
+
+
+  </fragment>
+
 
 </navigation>
