@@ -40,7 +40,25 @@
     tools:layout="@layout/fragment_define_event">
 
 
+    <argument
+      android:name="event_name"
+      app:argType="string"
+      android:defaultValue="string.Event"/>
 
+    <argument
+      android:name="event_address"
+      app:argType="string"
+      android:defaultValue="string.address"/>
+
+    <argument
+      android:name="event_description"
+      app:argType="string"
+      android:defaultValue="string.Description"/>
+
+    <argument
+      android:name="event_passkey"
+      app:argType="string"
+      android:defaultValue="string.Passkey"/>
 
   </fragment>
 

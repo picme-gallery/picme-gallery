@@ -19,6 +19,9 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
+/**
+ * This class works asx a proxy to the server side.
+ */
 public interface WebServiceProxy {
 
   @GET("users/me")
@@ -30,17 +33,21 @@ public interface WebServiceProxy {
   @GET("events/{id}")
   Single<Event> getOwnEvent(@Header("Authorization") String bearerToken,  @Path("id") long id);
 
-  @POST
+  //TODO Ask Nick or Todd for help with post method.
+  @POST("events/save")
   Completable createEvent(@Body Event event);
 
 
-
-
-
+  /**
+   * This is a getter for Instance.
+   */
   static WebServiceProxy getInstance() {
     return InstanceHolder.INSTANCE;
   }
 
+  /**
+   * This nested class is the retrofit Gson builder.
+   */
   class InstanceHolder {
     private static final WebServiceProxy INSTANCE;
 

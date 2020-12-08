@@ -11,6 +11,9 @@ import edu.cnm.deepdive.picmegallery.model.Event;
 import edu.cnm.deepdive.picmegallery.service.EventRepository;
 import io.reactivex.disposables.CompositeDisposable;
 
+/**
+ * This class is where all the data is stored.
+ */
 public class MainViewModel extends AndroidViewModel implements LifecycleObserver {
 
   private final EventRepository eventRepository;
@@ -33,16 +36,27 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     //TODO perform any additional initialization of the viewModel.
   }
 
+  /**
+   * This is the getter for event.
+   */
   public LiveData<Event> getEvent() {
     return event;
   }
 
+  /**
+   * THis is the getter for throwable.
+   */
   public LiveData<Throwable> getThrowable() {
     return throwable;
   }
 
   //TODO generate additional getters as needed.
 
+  /**
+   * This method is used yo fetch a single event.
+   * @param id is the id of a specific event.
+   * @param passkey is the string password to get into an event.
+   */
   public void fetchEvent(long id, String passkey){
     pending.add(
         eventRepository.getEvent(id, passkey)
@@ -53,6 +67,10 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     );
   }
 
+  /**
+   * This method is used to to fetch a single event that the user has created.
+   * @param id is an id that corresponds to a specific event.
+   */
   public void fetchOwnEvent(long id){
     pending.add(
         eventRepository.getOwnEvent(id)
@@ -63,6 +81,9 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     );
   }
 
+  /**
+   * This method is usd to create an event.
+   */
   public void createEvent(Event event){
     pending.add(
         eventRepository.createEvent(event)
