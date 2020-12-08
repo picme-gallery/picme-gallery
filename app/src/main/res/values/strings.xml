@@ -14,4 +14,5 @@
   <string name="enter_event_password">enter event password</string>
   <string name="event_description_hint">event description</string>
   <string name="event_name_hint">event name</string>
+  <string name="take_picture_button">Take Picture</string>
 </resources>
