@@ -37,6 +37,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     //TODO initialize additional livedata fields as needed.
     pending = new CompositeDisposable();
     //TODO perform any additional initialization of the viewModel.
+    fetchAllEvents();
   }
 
   /**
@@ -57,6 +58,9 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     return throwable;
   }
 
+  public void setEvent(Event event) {
+    this.event.setValue(event);
+  }
   //TODO generate additional getters as needed.
 
   /**
@@ -90,6 +94,16 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     );
   }
 
+  public void fetchAllEvents() {
+    throwable.setValue(null);
+    pending.add(
+        eventRepository.getAll()
+        .subscribe(
+            events::postValue,
+            throwable::postValue
+        )
+    );
+  }
   /**
    * This method is usd to create an event.
    */
@@ -104,8 +118,6 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     );
   }
 
-
-  //TODO public methods that will be invoked by the controller to update the viewModel
 
   @OnLifecycleEvent(androidx.lifecycle.Lifecycle.Event.ON_STOP)
   private void clearPending() {

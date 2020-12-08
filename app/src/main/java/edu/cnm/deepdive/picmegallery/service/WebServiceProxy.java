@@ -7,6 +7,7 @@ import edu.cnm.deepdive.picmegallery.model.Event;
 import edu.cnm.deepdive.picmegallery.model.User;
 import io.reactivex.Completable;
 import io.reactivex.Single;
+import java.util.List;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import okhttp3.logging.HttpLoggingInterceptor.Level;
@@ -31,8 +32,10 @@ public interface WebServiceProxy {
   Single<Event> getEvent(@Header("Authorization") String bearerToken, @Header("Passkey") String passkey, @Path("id") long id);
 
   @GET("events/{id}")
-  Single<Event> getOwnEvent(@Header("Authorization") String bearerToken,  @Path("id") long id);
+  Single<Event> getOwnEvent(@Header("Authorization") String bearerToken, @Header("Creator") boolean creator,  @Path("id") long id);
 
+  @GET("events")
+  Single<List<Event>> getUserEvents(@Header("Authorization") String bearerToken);
 
   @POST("events")
   Single<Event> createEvent(@Header("Authorization") String bearerToken, @Body Event event);

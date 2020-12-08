@@ -5,6 +5,7 @@ import edu.cnm.deepdive.picmegallery.model.Event;
 import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
+import java.util.List;
 
 /**
  * This is the repository for an event.
@@ -46,7 +47,7 @@ public class EventRepository {
   public Single<Event> getOwnEvent(long id) {
     return signInService.refreshBearerToken()
         .observeOn(Schedulers.io())
-        .flatMap((token) -> webService.getOwnEvent(token, id));
+        .flatMap((token) -> webService.getOwnEvent(token, true, id));
   }
 
   /**
@@ -59,5 +60,13 @@ public class EventRepository {
         .observeOn(Schedulers.io())
         .flatMap((token) -> webService.createEvent(token, event));
   }
+
+  public Single<List<Event>> getAll() {
+    return signInService.refreshBearerToken()
+        .observeOn(Schedulers.io())
+        .flatMap(webService::getUserEvents);
+
+  }
+
 
 }

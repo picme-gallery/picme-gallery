@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -14,6 +16,7 @@ import edu.cnm.deepdive.picmegallery.adapter.EventAdapter;
 import edu.cnm.deepdive.picmegallery.controller.MainViewModel;
 import edu.cnm.deepdive.picmegallery.databinding.FragmentEventsBinding;
 import edu.cnm.deepdive.picmegallery.model.Event;
+import java.util.ArrayList;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
@@ -22,6 +25,7 @@ public class EventsFragment extends Fragment {
   private FragmentEventsBinding binding;
   private MainViewModel viewModel;
   private EventAdapter adapter;
+  private List<Event> events;
 
 
 
@@ -38,8 +42,13 @@ public class EventsFragment extends Fragment {
     // Access references in binding to set contents of view objects, as appropriate.
 
     //EventsFragmentDirections.actionNavHomeToDefineEventFragment()
-    adapter = new EventAdapter(getContext());
+    events = new ArrayList<>();
+    adapter = new EventAdapter(getContext(), events);
     binding.eventList.setAdapter(adapter);
+    binding.eventList.setOnItemClickListener((parent, view, position, id) -> {
+      viewModel.setEvent((Event) parent.getItemAtPosition(position));
+      Navigation.findNavController(binding.getRoot()).navigate(EventsFragmentDirections.showEventPhotos());
+    });
     return binding.getRoot();
   }
 
@@ -50,12 +59,11 @@ public class EventsFragment extends Fragment {
     super.onViewCreated(view, savedInstanceState);
     viewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
     viewModel.getEvents().observe(getViewLifecycleOwner(), (events) -> {
-      adapter.getEvents().clear();
-      adapter.getEvents().addAll(events);
+      this.events.clear();
+      this.events.addAll(events);
       adapter.notifyDataSetChanged();
     });
     viewModel.getEvent().observe(getViewLifecycleOwner(), (event) -> {
-      List<Event> events = adapter.getEvents();
       events.add(event);
       events.sort(null);
       adapter.notifyDataSetChanged();

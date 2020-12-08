@@ -16,20 +16,18 @@ import java.util.List;
 
 public class EventAdapter extends ArrayAdapter<Event> {
 
-  private final List<Event> events;
+
   private final LayoutInflater inflater;
 
   private ItemEventBinding binding;
 
-  public EventAdapter(@NonNull Context context) {
-    super(context, R.layout.item_event);
-    events = new ArrayList<>();
+  public EventAdapter(@NonNull Context context, List<Event> events) {
+    super(context, R.layout.item_event, events );
     inflater = LayoutInflater.from(context);
   }
 
-  public List<Event> getEvents() {
-    return events;
-  }
+
+
 
   @NonNull
   @Override
@@ -37,7 +35,7 @@ public class EventAdapter extends ArrayAdapter<Event> {
     binding = (convertView != null)
         ? ItemEventBinding.bind(convertView)
         : ItemEventBinding.inflate(inflater, parent, false);
-    Event event = events.get(position);
+    Event event = getItem(position);
     binding.name.setText(event.getName());
     binding.address.setText(event.getAddress());
     binding.description.setText(event.getDescription());

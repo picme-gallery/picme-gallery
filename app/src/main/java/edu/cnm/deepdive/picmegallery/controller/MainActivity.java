@@ -49,8 +49,11 @@ public class MainActivity extends AppCompatActivity {
         );
     MainViewModel mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
     getLifecycle().addObserver(mainViewModel);
-    mainViewModel.getThrowable().observe(this, (throwable) ->
-        Snackbar.make(binding.getRoot(), throwable.getMessage(), Snackbar.LENGTH_INDEFINITE).show());
+    mainViewModel.getThrowable().observe(this, (throwable) -> {
+      if (throwable != null) {
+        Snackbar.make(binding.getRoot(), throwable.getMessage(), Snackbar.LENGTH_INDEFINITE).show();
+      }
+    });
   }
 
 }

@@ -13,6 +13,9 @@
     <action
       android:id="@+id/action_navigation_events_to_define_event"
       app:destination="@id/define_event"/>
+    <action
+      android:id="@+id/show_event_photos"
+      app:destination="@id/event_photos"/>
   </fragment>
 
   <fragment
