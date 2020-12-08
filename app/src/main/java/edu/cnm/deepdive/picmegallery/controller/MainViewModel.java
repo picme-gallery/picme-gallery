@@ -94,7 +94,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
    * This method is usd to create an event.
    */
   public void createEvent(Event event){
-    throwable.setValue(null);
+//    throwable.setValue(null);
     pending.add(
         eventRepository.createEvent(event)
         .subscribe(

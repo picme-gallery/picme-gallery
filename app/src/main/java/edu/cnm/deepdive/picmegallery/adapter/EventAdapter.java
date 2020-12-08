@@ -38,6 +38,7 @@ public class EventAdapter extends ArrayAdapter<Event> {
         : ItemEventNameBinding.inflate(inflater, parent, false);
     Event event = events.get(position);
     binding.name.setText(event.getName());
+    //TODO add binding for the rest of the event description.
     return binding.getRoot();
   }
 }

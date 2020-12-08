@@ -54,7 +54,6 @@ public class EventRepository {
    * @param event is a reference to a event object.
    * @return a response code.
    */
-  //TODO Ask Nick or todd for help with create event method.
   public Single<Event> createEvent(Event event) {
     return signInService.refreshBearerToken()
         .observeOn(Schedulers.io())

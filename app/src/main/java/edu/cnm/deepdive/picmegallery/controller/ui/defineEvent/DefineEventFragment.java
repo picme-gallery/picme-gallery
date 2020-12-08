@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import edu.cnm.deepdive.picmegallery.R;
@@ -33,15 +34,12 @@ public class DefineEventFragment extends Fragment {
       String eventAddress = binding.eventAddress.getText().toString().trim();
       String eventDescription = binding.eventDescription.getText().toString().trim();
       String passkey = binding.eventPasskey.getText().toString().trim();
-      //TODO ask nick or todd for help with button logic and passing fragment args.
       Event event = new Event();
       event.setName(eventName);
       event.setAddress(eventAddress);
       event.setDescription(eventDescription);
       event.setPasskey(passkey);
       viewModel.createEvent(event);
-
-
     });
 
 

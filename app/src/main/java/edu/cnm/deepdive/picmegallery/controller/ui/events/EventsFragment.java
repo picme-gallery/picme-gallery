@@ -61,5 +61,4 @@ public class EventsFragment extends Fragment {
       adapter.notifyDataSetChanged();
     });
   }
-  // Get reference to view model and set observers on live data.
 }
