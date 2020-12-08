@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * This is an entity class that represents the info we store on the client-side for an event
  */
-public class Event {
+public class Event implements Comparable<Event>{
 
   /**
    * The
@@ -21,6 +21,9 @@ public class Event {
 
   @Expose
   private String name;
+
+  @Expose
+  private String address;
 
   @Expose
   private Date time;
@@ -68,6 +71,14 @@ public class Event {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public String getAddress() {
+    return address;
+  }
+
+  public void setAddress(String address) {
+    this.address = address;
   }
 
   public Date getTime() {
@@ -132,5 +143,10 @@ public class Event {
 
   public void setPhotos(List<Photo> photos) {
     this.photos = photos;
+  }
+
+  @Override
+  public int compareTo(Event other) {
+    return other.time.compareTo(time);
   }
 }

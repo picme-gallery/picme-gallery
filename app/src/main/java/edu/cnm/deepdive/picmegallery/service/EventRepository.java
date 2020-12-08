@@ -55,9 +55,10 @@ public class EventRepository {
    * @return a response code.
    */
   //TODO Ask Nick or todd for help with create event method.
-  public Completable createEvent(Event event) {
-    return webService.createEvent(event)
-        .subscribeOn(Schedulers.io());
+  public Single<Event> createEvent(Event event) {
+    return signInService.refreshBearerToken()
+        .observeOn(Schedulers.io())
+        .flatMap((token) -> webService.createEvent(token, event));
   }
 
 }

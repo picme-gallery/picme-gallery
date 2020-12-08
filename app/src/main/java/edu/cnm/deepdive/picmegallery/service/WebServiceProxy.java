@@ -34,8 +34,8 @@ public interface WebServiceProxy {
   Single<Event> getOwnEvent(@Header("Authorization") String bearerToken,  @Path("id") long id);
 
   //TODO Ask Nick or Todd for help with post method.
-  @POST("events/save")
-  Completable createEvent(@Body Event event);
+  @POST("events")
+  Single<Event> createEvent(@Header("Authorization") String bearerToken, @Body Event event);
 
 
   /**

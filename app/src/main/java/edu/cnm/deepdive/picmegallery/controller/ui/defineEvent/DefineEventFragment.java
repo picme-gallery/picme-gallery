@@ -34,7 +34,12 @@ public class DefineEventFragment extends Fragment {
       String eventDescription = binding.eventDescription.getText().toString().trim();
       String passkey = binding.eventPasskey.getText().toString().trim();
       //TODO ask nick or todd for help with button logic and passing fragment args.
-
+      Event event = new Event();
+      event.setName(eventName);
+      event.setAddress(eventAddress);
+      event.setDescription(eventDescription);
+      event.setPasskey(passkey);
+      viewModel.createEvent(event);
 
 
     });
@@ -47,7 +52,7 @@ public class DefineEventFragment extends Fragment {
   public void onViewCreated(@NonNull @NotNull View view,
       @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    viewModel = new ViewModelProvider(this).get(MainViewModel.class);
+    viewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
   }
 }
 
