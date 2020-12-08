@@ -5,17 +5,24 @@ import com.google.gson.GsonBuilder;
 import edu.cnm.deepdive.picmegallery.BuildConfig;
 import edu.cnm.deepdive.picmegallery.model.Event;
 import edu.cnm.deepdive.picmegallery.model.User;
+import io.reactivex.Completable;
 import io.reactivex.Single;
+import java.util.List;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import okhttp3.logging.HttpLoggingInterceptor.Level;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
+/**
+ * This class works as a proxy to the server side.
+ */
 public interface WebServiceProxy {
 
   @GET("users/me")
@@ -25,17 +32,25 @@ public interface WebServiceProxy {
   Single<Event> getEvent(@Header("Authorization") String bearerToken, @Header("Passkey") String passkey, @Path("id") long id);
 
   @GET("events/{id}")
-  Single<Event> getOwnEvent(@Header("Authorization") String bearerToken,  @Path("id") long id);
+  Single<Event> getOwnEvent(@Header("Authorization") String bearerToken, @Header("Creator") boolean creator,  @Path("id") long id);
+
+  @GET("events")
+  Single<List<Event>> getUserEvents(@Header("Authorization") String bearerToken);
+
+  @POST("events")
+  Single<Event> createEvent(@Header("Authorization") String bearerToken, @Body Event event);
 
 
-
-
-
-
+  /**
+   * This is a getter for Instance.
+   */
   static WebServiceProxy getInstance() {
     return InstanceHolder.INSTANCE;
   }
 
+  /**
+   * This nested class is the retrofit Gson builder.
+   */
   class InstanceHolder {
     private static final WebServiceProxy INSTANCE;
 

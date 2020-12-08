@@ -5,40 +5,80 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 import java.util.List;
 
-public class Event {
+/**
+ * This is an entity class that represents the info we store on the client-side for an event
+ */
+public class Event implements Comparable<Event>{
 
+  /**
+   * The
+   */
   @SerializedName("id")
   private long externalId;
 
+  /**
+   * A user associated with an Event.
+   */
   @Expose
   private User user;
 
+  /**
+   * The name of an event
+   */
   @Expose
   private String name;
+
+  /**
+   * The time which an event was created at
+   */
+  @Expose
+  private String address;
 
   @Expose
   private Date time;
 
+  /**
+   * The date which an event was updated
+   */
   @Expose
   private Date updated;
 
+  /**
+   * The text description of an event
+   */
   @Expose
   private String description;
 
+  /**
+   * The passkey required for a user to get access to an event.
+   */
   @Expose
   private String passkey;
 
+  /**
+   * An optional longitude double, which helps us locate where an event is taking place
+   */
   @Expose
   private Double longitude;
 
+  /**
+   * An optional longitude double, which helps us locate where an event is taking place
+   */
   @Expose
   private Double latitude;
 
+  /**
+   * A list of all the users that are a part of an event!
+   */
   @Expose
   private List<User> users;
 
+  /**
+   * A list of photos that were uploaded to an event.
+   */
   @Expose
   private List<Photo> photos;
+
 
   public long getExternalId() {
     return externalId;
@@ -62,6 +102,14 @@ public class Event {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public String getAddress() {
+    return address;
+  }
+
+  public void setAddress(String address) {
+    this.address = address;
   }
 
   public Date getTime() {
@@ -126,5 +174,10 @@ public class Event {
 
   public void setPhotos(List<Photo> photos) {
     this.photos = photos;
+  }
+
+  @Override
+  public int compareTo(Event other) {
+    return other.time.compareTo(time);
   }
 }

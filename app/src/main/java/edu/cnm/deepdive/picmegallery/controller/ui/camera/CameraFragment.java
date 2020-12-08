@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.picmegallery.ui.camera;
+package edu.cnm.deepdive.picmegallery.controller.ui.camera;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;

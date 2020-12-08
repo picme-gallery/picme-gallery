@@ -2,6 +2,7 @@ package edu.cnm.deepdive.picmegallery.controller;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,11 +12,12 @@ import edu.cnm.deepdive.picmegallery.R;
 import edu.cnm.deepdive.picmegallery.databinding.ActivityLoginBinding;
 import edu.cnm.deepdive.picmegallery.service.GoogleSignInService;
 
-
+/**
+ * This class is what holds the logic behind the google sign in functionality.
+ */
 public class LoginActivity extends AppCompatActivity {
 
   private static final int LOGIN_REQUEST_CODE = 1000;
-
   private GoogleSignInService service;
   private ActivityLoginBinding binding;
 
@@ -32,7 +34,8 @@ public class LoginActivity extends AppCompatActivity {
             this::updateAndSwitch,
             (throwable) -> {
               binding = ActivityLoginBinding.inflate(getLayoutInflater());
-              binding.signIn.setOnClickListener((v) -> service.startSignIn(this, LOGIN_REQUEST_CODE));
+              binding.signIn
+                  .setOnClickListener((v) -> service.startSignIn(this, LOGIN_REQUEST_CODE));
               setContentView(binding.getRoot());
             }
         );
@@ -50,15 +53,19 @@ public class LoginActivity extends AppCompatActivity {
     }
   }
 
+  /**
+   * This class is used to switch to the main activity after a successful sign in.
+   * @param account
+   */
   private void updateAndSwitch(GoogleSignInAccount account) {
     Intent intent = new Intent(this, MainActivity.class)
         .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
     startActivity(intent);
 
-//    userRepository.createUser(account)
+//    UserRepository.createUser(account)
 //        .subscribe(
-//            (user) ->{
-//              Intent intent = new Intent(this, MainActivityy.class)
+//            (user) -> {
+//              Intent intent = new Intent(this, MainActivity.class)
 //                  .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
 //              startActivity(intent);
 //
@@ -67,10 +74,9 @@ public class LoginActivity extends AppCompatActivity {
 //
 //            (throwable) -> {
 //              // TODO remove this after dev complete
-//              Log.e(getClass().getSimpleName(),throwable.getMessage(), throwable);
+//              Log.e(getClass().getSimpleName(), throwable.getMessage(), throwable);
 //              throw new RuntimeException(throwable);
 //            }
-//
 //        );
   }
 

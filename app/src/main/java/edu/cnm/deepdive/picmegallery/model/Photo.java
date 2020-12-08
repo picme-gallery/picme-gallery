@@ -4,11 +4,15 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 
+/**
+ * The photo entity class, which contains all the data regarding photos which can be posted to an event.
+ */
 public class Photo {
 
   @Expose
   @SerializedName("id")
   private long externalId;
+
 
   @Expose
   private String event;
@@ -16,15 +20,27 @@ public class Photo {
   @Expose
   private String user;
 
+  /**
+   * The latitude of where a photo is taken
+   */
   @Expose
   private Double latitude;
 
+  /**
+   *  The longitude of where a photo is taken
+   */
   @Expose
   private Double longitude;
 
+  /**
+   *  A string of captions associated with a photo
+   */
   @Expose
   private String caption;
 
+  /**
+   * A date timestamp of when a photo is taken
+   */
   @Expose
   private Date uploaded;
 

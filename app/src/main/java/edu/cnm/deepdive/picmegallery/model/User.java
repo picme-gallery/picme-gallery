@@ -13,18 +13,35 @@ public class User {
   @Expose
   private String displayName;
 
+  /**
+   *
+   * @return the externalId or id of the user.
+   */
   public long getExternalId() {
     return externalId;
   }
 
+  /**
+   *
+   * @param externalId , a long, which represents the id of the User.
+   */
   public void setExternalId(long externalId) {
     this.externalId = externalId;
   }
 
+  /**
+   *
+   * @return , a String, which represents the user's display name within the application
+   */
   public String getDisplayName() {
     return displayName;
   }
 
+  /**
+   *  A setter used to change the user's display name
+   * @param displayName , a String, which represents the User's display name.
+   *
+   */
   public void setDisplayName(String displayName) {
     this.displayName = displayName;
   }
