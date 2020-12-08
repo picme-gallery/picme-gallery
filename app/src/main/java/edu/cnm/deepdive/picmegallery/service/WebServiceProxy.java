@@ -20,7 +20,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 /**
- * This class works asx a proxy to the server side.
+ * This class works as a proxy to the server side.
  */
 public interface WebServiceProxy {
 
