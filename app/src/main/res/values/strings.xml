@@ -14,4 +14,13 @@
   <string name="enter_event_password">enter event password</string>
   <string name="event_description_hint">event description</string>
   <string name="event_name_hint">event name</string>
+
+
+  <string name="action_sign_out">Sign out</string>
+  <string name="gallery_fragment_label">Gallery</string>
+  <string name="action_refresh">Refresh</string>
+  <string name="select_image_prompt">Select image</string>
+  <string name="image_title_hint">Title</string>
+  <string name="description_title_hint">Description</string>
+  <string name="upload_properties_title">Upload Properties</string>
 </resources>

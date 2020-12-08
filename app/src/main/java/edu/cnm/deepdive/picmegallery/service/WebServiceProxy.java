@@ -4,10 +4,15 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import edu.cnm.deepdive.picmegallery.BuildConfig;
 import edu.cnm.deepdive.picmegallery.model.Event;
+import edu.cnm.deepdive.picmegallery.model.Photo;
 import edu.cnm.deepdive.picmegallery.model.User;
 import io.reactivex.Completable;
 import io.reactivex.Single;
+import java.util.List;
+import java.util.UUID;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import okhttp3.logging.HttpLoggingInterceptor.Level;
 import retrofit2.Retrofit;
@@ -16,7 +21,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 /**
@@ -36,6 +43,30 @@ public interface WebServiceProxy {
 
   @POST("events")
   Single<Event> createEvent(@Header("Authorization") String bearerToken, @Body Event event);
+  
+  
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+//REST CONTROLLER ENDPOINTS FOR UPLOADING PHOTO
+
+  @Multipart
+  @POST("photos")
+  Single<Photo> post(@Header("Authorization") String bearerToken, @Part MultipartBody.Part file,
+      @Part("title") RequestBody title, @Part("description") RequestBody description);
+
+  @Multipart
+  @POST("photos")
+  Single<Photo> post(@Header("Authorization") String bearerToken, @Part MultipartBody.Part file,
+      @Part("title") RequestBody title);
+
+  @GET("user/{id}/photos")
+  Single<List<Photo>> getUserphotos(
+      @Header("Authorization") String bearerToken, @Path("id") UUID id);
+
+  @GET("photos")
+  Single<List<Photo>> getAllphotos(@Header("Authorization") String bearerToken);
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
   /**
