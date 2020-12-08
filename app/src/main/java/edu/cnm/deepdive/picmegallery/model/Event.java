@@ -5,8 +5,14 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * This is an entity class that represents the info we store on the client-side for an event
+ */
 public class Event {
 
+  /**
+   * The
+   */
   @SerializedName("id")
   private long externalId;
 
