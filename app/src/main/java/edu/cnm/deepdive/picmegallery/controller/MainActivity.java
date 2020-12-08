@@ -12,6 +12,9 @@ import edu.cnm.deepdive.picmegallery.R;
 import edu.cnm.deepdive.picmegallery.service.UserRepository;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
+/**
+ * Thi main activity class is what sets up all the fragments in the ui.
+ */
 public class MainActivity extends AppCompatActivity {
 
   private UserRepository userRepository; //FIXME
