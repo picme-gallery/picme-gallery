@@ -49,6 +49,18 @@ public class EventsFragment extends Fragment {
       viewModel.setEvent((Event) parent.getItemAtPosition(position));
       Navigation.findNavController(binding.getRoot()).navigate(EventsFragmentDirections.showEventPhotos());
     });
+
+    binding.joinEventButton.setOnClickListener((v) -> {
+      long eventKey;
+      String eventPasskey = binding.eventPasskey.toString().trim();
+      eventKey = Long.parseLong(binding.eventKey.getText().toString().trim());
+      viewModel.fetchEvent(eventKey,eventPasskey);
+
+//      String eventName;
+//      String eventPasskey = binding.eventPasskey.getText().toString().trim();
+//      eventName = binding.eventKey.getText().toString().trim();
+//      viewModel.getEventByName(eventName,eventPasskey);
+    });
     return binding.getRoot();
   }
 

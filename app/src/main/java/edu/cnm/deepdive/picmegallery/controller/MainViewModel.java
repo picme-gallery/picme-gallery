@@ -104,11 +104,22 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
         )
     );
   }
+
+  public void getEventByName(String passkey, String name) {
+    throwable.setValue(null);
+    pending.add(
+        eventRepository.getEventByName(name, passkey)
+        .subscribe(
+            event::postValue,
+            throwable::postValue
+        )
+    );
+  }
   /**
    * This method is usd to create an event.
    */
   public void createEvent(Event event){
-//    throwable.setValue(null);
+
     pending.add(
         eventRepository.createEvent(event)
         .subscribe(

@@ -19,6 +19,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * This class works as a proxy to the server side.
@@ -37,8 +38,12 @@ public interface WebServiceProxy {
   @GET("events")
   Single<List<Event>> getUserEvents(@Header("Authorization") String bearerToken);
 
+  @GET("events/{name}")
+  Single<Event> getEventByName(@Header("Authorization") String bearerToken, @Header("passkey") String passkey, @Path("name") String name);
+
   @POST("events")
   Single<Event> createEvent(@Header("Authorization") String bearerToken, @Body Event event);
+
 
 
   /**
