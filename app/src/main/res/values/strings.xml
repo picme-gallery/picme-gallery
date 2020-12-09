@@ -15,4 +15,5 @@
   <string name="event_description_hint">event description</string>
   <string name="event_name_hint">event name</string>
   <string name="take_picture_button">Take Picture</string>
+  <string name="gallery_info">Get yo gallery people!</string>
 </resources>

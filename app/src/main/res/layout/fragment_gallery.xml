@@ -8,17 +8,23 @@
   android:background="@drawable/background_fill"
   tools:context=".controller.ui.gallery.GalleryFragment">
 
-  <TextView
-    android:id="@+id/nav_gallery"
-    android:layout_width="match_parent"
+
+  <Button
+    android:id="@+id/button_get_gal"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    android:textAlignment="center"
-    android:textSize="20sp"
-    app:layout_constraintBottom_toBottomOf="parent"
+    android:text="@string/gallery_info"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"/>
+  <ImageView
+    android:id="@+id/image_view_gal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/button_get_gal"
+    tools:src="@tools:sample/backgrounds/scenic"
+    android:contentDescription="This should hold a gallery"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
