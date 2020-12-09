@@ -9,22 +9,27 @@
   tools:context=".controller.ui.gallery.GalleryFragment">
 
 
-  <Button
-    android:id="@+id/button_get_gal"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/gallery_info"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"/>
   <ImageView
     android:id="@+id/image_view_gal"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+    android:layout_margin="@dimen/half_margin"
+    android:contentDescription="@string/this_should_hold_a_gallery"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/button_get_gal"
-    tools:src="@tools:sample/backgrounds/scenic"
-    android:contentDescription="This should hold a gallery"/>
+    app:layout_constraintTop_toTopOf="parent"
+    tools:src="@tools:sample/backgrounds/scenic"/>
+
+  <Button
+    android:id="@+id/button_get_gal"
+    android:layout_margin="@dimen/half_margin"
+    android:background="@drawable/rounded_buttons"
+    android:textColor="@color/yellow"
+    android:layout_width="160dp"
+    android:layout_height="wrap_content"
+    android:text="@string/gallery_info"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/image_view_gal"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
