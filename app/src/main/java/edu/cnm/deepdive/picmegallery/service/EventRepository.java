@@ -68,5 +68,11 @@ public class EventRepository {
 
   }
 
+  public Single<Event> getEventByName(String name, String passkey) {
+    return signInService.refreshBearerToken()
+        .observeOn(Schedulers.io())
+        .flatMap((token) -> webService.getEventByName(name, passkey, token));
+  }
+
 
 }

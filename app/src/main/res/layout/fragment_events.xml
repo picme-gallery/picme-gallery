@@ -76,9 +76,9 @@
       android:id="@+id/event_key"
       android:layout_width="150dp"
       android:layout_height="50dp"
-      android:hint="@string/event_key_hint"
+      android:hint="@string/event_name_"
       android:inputType="textCapCharacters|textMultiLine|text"
-      tools:text="Event Key"/>
+      tools:text="Event Name"/>
 
   </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,7 +95,7 @@
       android:id="@+id/event_passkey"
       android:layout_width="150dp"
       android:layout_height="50dp"
-      android:hint="@string/event_passkey_hint"
+      android:hint="@string/event_passkey"
       android:inputType="textCapCharacters|textMultiLine|text"
       tools:text="Event Key"/>
 
