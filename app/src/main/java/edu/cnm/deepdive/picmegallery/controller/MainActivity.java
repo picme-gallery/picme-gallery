@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     getLifecycle().addObserver(mainViewModel);
     mainViewModel.getThrowable().observe(this, (throwable) -> {
       if (throwable != null) {
-        Snackbar.make(binding.getRoot(), throwable.getMessage(), Snackbar.LENGTH_INDEFINITE).show();
+        Snackbar.make(binding.getRoot(), throwable.getMessage(), Snackbar.LENGTH_LONG).show();
       }
     });
   }

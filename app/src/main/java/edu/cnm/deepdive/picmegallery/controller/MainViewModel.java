@@ -8,7 +8,9 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.OnLifecycleEvent;
 import edu.cnm.deepdive.picmegallery.model.Event;
+import edu.cnm.deepdive.picmegallery.model.Photo;
 import edu.cnm.deepdive.picmegallery.service.EventRepository;
+import edu.cnm.deepdive.picmegallery.service.PhotoRepository;
 import io.reactivex.disposables.CompositeDisposable;
 import java.util.List;
 
@@ -18,9 +20,12 @@ import java.util.List;
 public class MainViewModel extends AndroidViewModel implements LifecycleObserver {
 
   private final EventRepository eventRepository;
+  private final PhotoRepository photoRepository;
   //TODO Add more repositories as needed.
   private final MutableLiveData<Event> event;
   private final MutableLiveData<List<Event>> events;
+  private final MutableLiveData<Photo> photo;
+  private final MutableLiveData<List<Photo>> photos;
   private final MutableLiveData<Throwable> throwable;
   //TODO Add more live data fields as needed.
   private final CompositeDisposable pending;
@@ -30,9 +35,12 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
       @NonNull Application application) {
     super(application);
     eventRepository = new EventRepository(application);
+    photoRepository = new PhotoRepository(application);
     //TODO initialize additional repositories as needed.
     event = new MutableLiveData<>();
     events = new MutableLiveData<>();
+    photo = new MutableLiveData<>();
+    photos = new MutableLiveData<>();
     throwable = new MutableLiveData<>();
     //TODO initialize additional livedata fields as needed.
     pending = new CompositeDisposable();
@@ -118,6 +126,16 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     );
   }
 
+  public void loadPhotos() {
+    throwable.setValue(null);
+    pending.add(
+        photoRepository.getAll()
+            .subscribe(
+                photos::postValue,
+                throwable::postValue
+            )
+    );
+  }
 
   @OnLifecycleEvent(androidx.lifecycle.Lifecycle.Event.ON_STOP)
   private void clearPending() {

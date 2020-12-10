@@ -4,6 +4,7 @@ import android.content.Context;
 import android.provider.ContactsContract.Contacts.Photo;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.picmegallery.adapter.PhotoRecyclerAdapter.Holder;
@@ -51,10 +52,14 @@ public class PhotoRecyclerAdapter extends RecyclerView.Adapter<Holder> {
   class Holder extends RecyclerView.ViewHolder {
 
     private final FragmentEventPhotosBinding binding;
+    private Photo photo;
 
     private Holder(@NonNull FragmentEventPhotosBinding binding) {
       super(binding.getRoot());
       this.binding = binding;
+      /*Adapter<? extends PhotoRecyclerAdapter> adapter = new ArrayAdapter<>(context,
+          android.R.layout.simple_gallery_item, photos);
+      binding.eventPhotos.setAdapter(adapter);*/
     }
 
 
