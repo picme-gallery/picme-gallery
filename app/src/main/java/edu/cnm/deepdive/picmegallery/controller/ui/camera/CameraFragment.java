@@ -39,12 +39,9 @@ public class CameraFragment extends Fragment {
     View view = inflater.inflate(R.layout.fragment_camera, container, false);
     btnCapture =(Button) view.findViewById(R.id.captureButton);
 
-    btnCapture.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent cInt = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(cInt,Image_Capture_Code);
-      }
+    btnCapture.setOnClickListener(v -> {
+      Intent cInt = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+      startActivityForResult(cInt,Image_Capture_Code);
     });
 
     return view;
