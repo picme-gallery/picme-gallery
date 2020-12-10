@@ -21,7 +21,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
  */
 public class MainActivity extends AppCompatActivity {
 
-  private UserRepository userRepository; //FIXME
+  public static final String EVENT_ID_KEY = "event_id";
+  public static final String EVENT_PASSKEY_KEY = "event_passkey";
+
   private ActivityMainBinding binding;
 
   @Override
@@ -33,22 +35,17 @@ public class MainActivity extends AppCompatActivity {
     // Passing each menu ID as a set of Ids because each
     // menu should be considered as top level destinations.
     AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-        R.id.navigation_events, R.id.navigation_gallery, R.id.navigation_camera, R.id.event_photos, R.id.define_event)
+        R.id.navigation_gallery, R.id.navigation_camera, R.id.event_photos)
         .build();
     NavController navController = ((NavHostFragment) getSupportFragmentManager()
         .findFragmentById(R.id.nav_host_fragment)).getNavController();
     NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
     NavigationUI.setupWithNavController(navView, navController);
-    //FIX ME This is just temporary to verify round trip.
-    userRepository = new UserRepository(this);
-    userRepository.getProfileFromServer()
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(
-            (user) -> Toast.makeText(this, user.getDisplayName(), Toast.LENGTH_LONG).show(),
-            (throwable) -> Toast.makeText(this, throwable.getMessage(), Toast.LENGTH_LONG ).show()
-        );
     MainViewModel mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
     getLifecycle().addObserver(mainViewModel);
+    long eventId = getIntent().getLongExtra(EVENT_ID_KEY, 0);
+    String passkey = getIntent().getStringExtra(EVENT_PASSKEY_KEY);
+    mainViewModel.fetchEvent(eventId, passkey);
     mainViewModel.getThrowable().observe(this, (throwable) -> {
       if (throwable != null) {
         Snackbar.make(binding.getRoot(), throwable.getMessage(), Snackbar.LENGTH_LONG).show();

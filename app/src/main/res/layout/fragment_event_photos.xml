@@ -14,7 +14,6 @@
     android:orientation="vertical"
     android:background="@drawable/background_fill"
     android:padding="@dimen/half_static_spacing"
-    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent"

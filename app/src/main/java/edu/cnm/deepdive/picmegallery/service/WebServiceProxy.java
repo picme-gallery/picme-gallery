@@ -35,30 +35,37 @@ public interface WebServiceProxy {
   Single<User> getProfile(@Header("Authorization") String bearerToken);
 
   @GET("events/{id}")
-  Single<Event> getEvent(@Header("Authorization") String bearerToken, @Header("Passkey") String passkey, @Path("id") long id);
+  Single<Event> getEvent(@Header("Authorization") String bearerToken,
+      @Header("Passkey") String passkey, @Path("id") long id);
 
   @GET("events/{id}")
-  Single<Event> getOwnEvent(@Header("Authorization") String bearerToken, @Header("Creator") boolean creator,  @Path("id") long id);
+  Single<Event> getOwnEvent(@Header("Authorization") String bearerToken,
+      @Header("Creator") boolean creator, @Path("id") long id);
 
   @GET("events")
   Single<List<Event>> getUserEvents(@Header("Authorization") String bearerToken);
 
   @GET("events/{id}/photos")
-  Single<List<Photo>> getAllImages(@Header("Authorization") String bearerToken);
+  Single<List<Photo>> getEventImages(@Header("Authorization") String bearerToken,
+      @Header("Passkey") String passkey, @Path("id") long id);
 
-  @GET("events/{name}")
-  Single<Event> getEventByName(@Header("Authorization") String bearerToken, @Header("passkey") String passkey, @Path("name") String name);
+//  @GET("events/{id}")
+//  Single<Event> getEventByName(@Header("Authorization") String bearerToken,
+//      @Header("Passkey") String passkey, @Path("id") String name);
 
   @POST("events")
   Single<Event> createEvent(@Header("Authorization") String bearerToken, @Body Event event);
 
   @Multipart
   @POST("events/{id}/photos")
-  Single<Photo> post(@Header("Authorization") String bearerToken, @Part MultipartBody.Part file);
+  Single<Photo> postByCreator(@Header("Authorization") String bearerToken,
+      @Header("Creator") boolean creator, @Path("id") long id, @Part MultipartBody.Part file);
+  //TODO add additional perams for caption ect...
 
-
-
-
+  @Multipart
+  @POST("events/{id}/photos")
+  Single<Photo> postByPasskey(@Header("Authorization") String bearerToken,
+      @Header("Passkey") String passkey, @Path("id") long id, @Part MultipartBody.Part file);
 
   /**
    * This is a getter for Instance.
@@ -71,6 +78,7 @@ public interface WebServiceProxy {
    * This nested class is the retrofit Gson builder.
    */
   class InstanceHolder {
+
     private static final WebServiceProxy INSTANCE;
 
     static {
@@ -78,7 +86,7 @@ public interface WebServiceProxy {
           .excludeFieldsWithoutExposeAnnotation()
           .create();
       HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-      interceptor.setLevel(BuildConfig.DEBUG ? Level.BODY : Level.NONE);
+      interceptor.setLevel(BuildConfig.DEBUG ? Level.HEADERS : Level.NONE);
       OkHttpClient client = new OkHttpClient.Builder()
           .addInterceptor(interceptor)
           .build();

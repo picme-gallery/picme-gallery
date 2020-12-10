@@ -1,6 +1,7 @@
 package edu.cnm.deepdive.picmegallery.controller;
 
 import android.app.Application;
+import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LifecycleObserver;
@@ -26,6 +27,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
   private final MutableLiveData<List<Event>> events;
   private final MutableLiveData<Photo> photo;
   private final MutableLiveData<List<Photo>> photos;
+  private final MutableLiveData<Uri> imageUri;
   private final MutableLiveData<Throwable> throwable;
   //TODO Add more live data fields as needed.
   private final CompositeDisposable pending;
@@ -41,6 +43,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     events = new MutableLiveData<>();
     photo = new MutableLiveData<>();
     photos = new MutableLiveData<>();
+    imageUri = new MutableLiveData<>();
     throwable = new MutableLiveData<>();
     //TODO initialize additional livedata fields as needed.
     pending = new CompositeDisposable();
@@ -59,6 +62,22 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     return events;
   }
 
+  public LiveData<Photo> getPhoto() {
+    return photo;
+  }
+
+  public LiveData<List<Photo>> getPhotos() {
+    return photos;
+  }
+
+  public LiveData<Uri> getImageUri() {
+    return imageUri;
+  }
+
+  public void setImageUri(Uri imageUri) {
+    this.imageUri.setValue(imageUri);
+  }
+
   /**
    * THis is the getter for throwable.
    */
@@ -73,10 +92,11 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
 
   /**
    * This method is used yo fetch a single event.
-   * @param id is the id of a specific event.
+   *
+   * @param id      is the id of a specific event.
    * @param passkey is the string password to get into an event.
    */
-  public void fetchEvent(long id, String passkey){
+  public void fetchEvent(long id, String passkey) {
     throwable.setValue(null);
     pending.add(
         eventRepository.getEvent(id, passkey)
@@ -89,9 +109,10 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
 
   /**
    * This method is used to to fetch a single event that the user has created.
+   *
    * @param id is an id that corresponds to a specific event.
    */
-  public void fetchOwnEvent(long id){
+  public void fetchOwnEvent(long id) {
     throwable.setValue(null);
     pending.add(
         eventRepository.getOwnEvent(id)
@@ -106,41 +127,54 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     throwable.setValue(null);
     pending.add(
         eventRepository.getAll()
-        .subscribe(
-            events::postValue,
-            throwable::postValue
-        )
+            .subscribe(
+                events::postValue,
+                throwable::postValue
+            )
     );
   }
 
-  public void getEventByName(String passkey, String name) {
-    throwable.setValue(null);
-    pending.add(
-        eventRepository.getEventByName(name, passkey)
-        .subscribe(
-            event::postValue,
-            throwable::postValue
-        )
-    );
-  }
+//  public void getEventByName(String passkey, String name) {
+//    throwable.setValue(null);
+//    pending.add(
+//        eventRepository.getEventByName(name, passkey)
+//        .subscribe(
+//            event::postValue,
+//            throwable::postValue
+//        )
+//    );
+//  }
+
   /**
    * This method is usd to create an event.
    */
-  public void createEvent(Event event){
+  public void createEvent(Event event) {
 
     pending.add(
         eventRepository.createEvent(event)
-        .subscribe(
-            this.event::postValue,
-            throwable::postValue
-        )
+            .subscribe(
+                this.event::postValue,
+                throwable::postValue
+            )
     );
   }
 
-  public void loadPhotos() {
+  public void savePhoto(Uri imageUri) {
+    Event event = this.event.getValue();
     throwable.setValue(null);
     pending.add(
-        photoRepository.getAll()
+        photoRepository.add(imageUri, event.getExternalId(), event.getPasskey())
+            .subscribe(
+                photo::postValue,
+                throwable::postValue
+            )
+    );
+  }
+
+  public void loadPhotos(Event event) {
+    throwable.setValue(null);
+    pending.add(
+        photoRepository.getAllForEvent(event)
             .subscribe(
                 photos::postValue,
                 throwable::postValue

@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
    * @param account
    */
   private void updateAndSwitch(GoogleSignInAccount account) {
-    Intent intent = new Intent(this, MainActivity.class)
+    Intent intent = new Intent(this, EventActivity.class)
         .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
     startActivity(intent);
 

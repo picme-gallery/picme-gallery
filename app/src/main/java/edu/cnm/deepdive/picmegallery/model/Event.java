@@ -13,6 +13,7 @@ public class Event implements Comparable<Event>{
   /**
    * The
    */
+  @Expose
   @SerializedName("id")
   private long externalId;
 

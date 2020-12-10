@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import edu.cnm.deepdive.picmegallery.R;
 import edu.cnm.deepdive.picmegallery.controller.MainViewModel;
+import edu.cnm.deepdive.picmegallery.controller.ui.events.EventsFragment;
 import edu.cnm.deepdive.picmegallery.databinding.FragmentDefineEventBinding;
 import edu.cnm.deepdive.picmegallery.model.Event;
 import org.jetbrains.annotations.NotNull;
@@ -51,6 +52,12 @@ public class DefineEventFragment extends Fragment {
       @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     viewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
+    viewModel.getEvent().observe(getViewLifecycleOwner(), (event) -> {
+      EventsFragment fragment = new EventsFragment();
+      getParentFragmentManager().beginTransaction()
+          .replace(R.id.event_fragment_container, fragment)
+          .commit();
+    });
   }
 }
 

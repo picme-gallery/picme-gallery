@@ -5,11 +5,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.OpenableColumns;
+import edu.cnm.deepdive.picmegallery.model.Event;
 import edu.cnm.deepdive.picmegallery.model.Photo;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 import java.io.File;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -33,13 +36,15 @@ public class PhotoRepository {
     multipartFormType = MediaType.parse("multipart/form-data");
   }
 
-  public Single<List<Photo>> getAll() {
+  public Single<List<Photo>> getAllForEvent(Event event) {
     return signInService.refreshBearerToken()
         .observeOn(Schedulers.io())
-        .flatMap(webService::getAllImages);
+        .flatMap((token) -> webService.getEventImages(token, event.getPasskey(),
+            event.getExternalId()));
   }
 
-  public Single<Photo> add(Uri uri) {
+  public Single<Photo> add(Uri uri, long id, String passkey) {
+    File[] filesCreated = new File[1];
     return signInService.refreshBearerToken()
         .observeOn(Schedulers.io())
         .flatMap((token) -> {
@@ -53,10 +58,12 @@ public class PhotoRepository {
             String filename = cursor.getString(nameIndex);
             File outputDir = context.getCacheDir();
             File outputFile = File.createTempFile("xfer", null, outputDir);
+            filesCreated[0] = outputFile;
+            Files.copy(input, outputFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             RequestBody fileBody = RequestBody.create(outputFile, type);
             MultipartBody.Part filePart = MultipartBody.Part
                 .createFormData("file", filename, fileBody);
-            return webService.post(token, filePart);
+            return  webService.postByPasskey(token, passkey, id, filePart);
           }
 
         });

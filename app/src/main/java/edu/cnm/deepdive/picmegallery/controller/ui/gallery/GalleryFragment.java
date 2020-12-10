@@ -20,43 +20,58 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import edu.cnm.deepdive.picmegallery.R;
+import edu.cnm.deepdive.picmegallery.controller.MainViewModel;
+import edu.cnm.deepdive.picmegallery.databinding.FragmentGalleryBinding;
 import java.io.IOException;
 import java.util.Objects;
+import org.jetbrains.annotations.NotNull;
 
 public class GalleryFragment extends Fragment {
 
-  private GalleryViewModel galleryViewModel;
-  ImageView mImageview;
+  public static final int PICK_IMAGE_REQUEST = 1000;
+  public static final int PERMISSIONS_REQUEST = 2000;
+
+  private MainViewModel viewModel;
+  private FragmentGalleryBinding binding;
+  private Uri imageUri;
 
 
   @Nullable
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater,
       @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-    galleryViewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
-    View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-    mImageview = (ImageView) root.findViewById(R.id.image_view_gal);
+    binding = FragmentGalleryBinding.inflate(inflater, container, false);
+    binding.buttonGetGal.setOnClickListener(view -> pickImage());
+    binding.imageViewGal.setOnClickListener((v) -> viewModel.savePhoto(imageUri));
+    return binding.getRoot();
+  }
 
-    root.findViewById(R.id.button_get_gal).setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-  Intent cameraIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        int permissionCheck = ContextCompat.checkSelfPermission(
-            Objects.requireNonNull(getActivity()),
-            Manifest.permission.READ_EXTERNAL_STORAGE);
+  @Override
+  public void onViewCreated(@NonNull @NotNull View view,
+      @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+    //noinspection ConstantConditions
+    viewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
+    viewModel.getImageUri().observe(
+        getViewLifecycleOwner(), (imageUri) -> {
+          this.imageUri = imageUri;
+          binding.imageViewGal.setImageURI(imageUri);
+        });
+  }
 
-        if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
-          startGallery();
-        } else {
-          ActivityCompat.requestPermissions(getActivity(),
-              new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-              2000);
-        }
-      }
-    });
+  private void pickImage() {
+    //noinspection ConstantConditions
+    int permissionCheck = ContextCompat.checkSelfPermission(
+        getActivity(),
+        Manifest.permission.READ_EXTERNAL_STORAGE);
 
-
-    return root;
+    if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
+      startGallery();
+    } else {
+      ActivityCompat.requestPermissions(getActivity(),
+          new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+          PERMISSIONS_REQUEST);
+    }
   }
 
 
@@ -64,27 +79,17 @@ public class GalleryFragment extends Fragment {
     Intent cameraIntent = new Intent(Intent.ACTION_GET_CONTENT);
     cameraIntent.setType("image/*");
     if (cameraIntent.resolveActivity(getActivity().getPackageManager()) != null) {
-      startActivityForResult(cameraIntent, 1000);
+      startActivityForResult(cameraIntent, PICK_IMAGE_REQUEST);
     }
   }
 
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     //super method removed
-    if(resultCode == RESULT_OK) {
-      if(requestCode == 1000){
-        Uri returnUri = data.getData();
-        Bitmap bitmapImage = null;
-        try {
-          bitmapImage = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), returnUri);
-        } catch (IOException e) {
-          e.printStackTrace();
-        }
-        mImageview.setImageBitmap(bitmapImage);
-      }
+    if (resultCode == RESULT_OK && requestCode == PICK_IMAGE_REQUEST && data != null) {
+        viewModel.setImageUri(data.getData());
+
     }
-    //Uri returnUri;
-    //returnUri = data.getData();
 
 //    Glide.with(this)
 //        .load(returnUri)

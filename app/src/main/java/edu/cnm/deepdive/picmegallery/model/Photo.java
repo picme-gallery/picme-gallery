@@ -18,7 +18,7 @@ public class Photo {
   private String event;
 
   @Expose
-  private String user;
+  private User user;
 
   /**
    * The latitude of where a photo is taken
@@ -44,6 +44,9 @@ public class Photo {
   @Expose
   private Date uploaded;
 
+  @Expose
+  private String href;
+
   public long getExternalId() {
     return externalId;
   }
@@ -60,11 +63,11 @@ public class Photo {
     this.event = event;
   }
 
-  public String getUser() {
+  public User getUser() {
     return user;
   }
 
-  public void setUser(String user) {
+  public void setUser(User user) {
     this.user = user;
   }
 
@@ -98,5 +101,13 @@ public class Photo {
 
   public void setUploaded(Date uploaded) {
     this.uploaded = uploaded;
+  }
+
+  public String getHref() {
+    return href;
+  }
+
+  public void setHref(String href) {
+    this.href = href;
   }
 }

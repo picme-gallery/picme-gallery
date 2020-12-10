@@ -24,7 +24,7 @@ android {
 
     defaultConfig {
         applicationId "edu.cnm.deepdive.picmegallery"
-        minSdkVersion 24
+        minSdkVersion 26
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -107,6 +107,9 @@ dependencies {
     // OkHttp logging dependency
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
 
+    // loading images dependency
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    
     // Stetho (inspection) dependency
     implementation 'com.facebook.stetho:stetho:1.5.1'
 
