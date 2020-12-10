@@ -19,4 +19,5 @@
   <string name="this_should_hold_a_gallery">This should hold a gallery</string>
   <string name="event_name_">Event name</string>
   <string name="event_passkey">Event passkey</string>
+  <string name="event_id_hint">Event ID</string>
 </resources>
