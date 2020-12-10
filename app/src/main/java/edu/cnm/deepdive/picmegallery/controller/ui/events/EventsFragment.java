@@ -62,7 +62,7 @@ public class EventsFragment extends Fragment {
 
     binding.joinEventButton.setOnClickListener((v) -> {
       long eventKey;
-      String eventPasskey = binding.eventPasskey.toString().trim();
+      String eventPasskey = binding.eventPasskey.getText().toString().trim();
       eventKey = Long.parseLong(binding.eventKey.getText().toString().trim());
       viewModel.fetchEvent(eventKey, eventPasskey);
 
