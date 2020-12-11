@@ -78,6 +78,7 @@
       android:layout_height="50dp"
       android:hint="@string/event_name_"
       android:textStyle="bold"
+      android:textColorHint="@color/black"
       android:inputType="textCapCharacters|textMultiLine|text"
       tools:text="Event Name"/>
 
@@ -97,6 +98,8 @@
       android:layout_width="150dp"
       android:layout_height="50dp"
       android:textStyle="bold"
+      android:textColorHint="@color/black"
+      android:hint="@string/event_passkey"
       android:inputType="textCapCharacters|textMultiLine|text"
       tools:text="Event Passkey"/>
 
