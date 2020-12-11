@@ -80,7 +80,7 @@
       android:textStyle="bold"
       android:textColorHint="@color/black"
       android:inputType="textCapCharacters|textMultiLine|text"
-      tools:text="Event Name"/>
+      tools:text="Event Id"/>
 
   </com.google.android.material.textfield.TextInputLayout>
 
