@@ -12,20 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.picmegallery.R;
-import edu.cnm.deepdive.picmegallery.databinding.FragmentCameraBinding;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class CameraFragment extends Fragment {
   public static final String EXTRA_INFO = "default";
