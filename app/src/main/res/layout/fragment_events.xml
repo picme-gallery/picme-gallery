@@ -100,7 +100,7 @@
       android:textStyle="bold"
       android:textColorHint="@color/black"
       android:hint="@string/event_passkey"
-      android:inputType="textCapCharacters|textMultiLine|text"
+      android:inputType="textMultiLine|text"
       tools:text="Event Passkey"/>
 
   </com.google.android.material.textfield.TextInputLayout>
