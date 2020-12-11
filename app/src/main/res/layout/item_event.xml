@@ -8,31 +8,34 @@
 
   <TextView
     android:id="@+id/name"
+    android:textStyle="bold"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    tools:text="Issacs' BirthDay"/>
+    tools:text="Isaacs' BirthDay"/>
 
   <TextView
     android:id="@+id/address"
+    android:textStyle="bold"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toBottomOf="@id/name"
-    tools:text="1213 random st "/>
+    tools:text="20 1st Plaza Center NW Albuquerque, NM 87102 "/>
 
   <TextView
     android:id="@+id/description"
+    android:textStyle="bold"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toBottomOf="@id/address"
-    tools:text="Issacs' BirthDay is byob"/>
+    tools:text="Isaacs' BirthDay is byob"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
